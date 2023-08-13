@@ -1,3 +1,4 @@
+import { ITag } from "@/types/tags"
 
 export const generateUUID = (): string => {
   const uuidFormat = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
@@ -22,7 +23,7 @@ export const formatISODateToHumanReadable = (isoDateString: string): string => {
   }
 
   const humanReadableDate = isoDate.toLocaleString('en-GB', options)
-  return humanReadableDate
+  return humanReadableDate as ITag['createdAt'] | ITag['updatedAt']
 }
 
 

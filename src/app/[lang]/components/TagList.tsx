@@ -24,24 +24,26 @@ const TagList: React.FC<TagProps> = ({ tags, text }) => {
 
   return (
     <div className='overflow-x-auto'>
-      <table className='table w-full'>
-        {/* head */}
-        <thead>
-          <tr>
-            <th>Tags</th>
-            <th>{text.tagList.createdAt}</th>
-            <th>{text.tagList.actions}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {visibleTags.map((tag) => (
-            <Tag text={text.tag} key={tag.id} tag={tag} />
-          ))}
-        </tbody>
-      </table>
-
+      <div className="flex ">
+        <table className='table w-full'>
+          {/* head */}
+          <thead>
+            <tr>
+              <th>Tags</th>
+              <th>{text.tagList.createdAt}</th>
+              <th>{text.tagList.updatedAt}</th>
+              <th>{text.tagList.actions}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {visibleTags.map((tag) => (
+              <Tag text={text.tag} key={tag.id} tag={tag} />
+            ))}
+          </tbody>
+        </table>
+      </div>
       {/* Pagination controls */}
-      <div className="flex items-center mt-2 justify-between">
+      <div className="flex items-center mt-2 justify-between sm:flex-col">
         <div className="pagination">
           {Array.from({ length: totalPages }, (_, index) => (
             <button

@@ -15,6 +15,7 @@
     },
     "tagList": {
       "createdAt": "Created At",
+      "updatedAt": "Updated At",
       "actions": "Actions",
       "rowsPerPage": "Rows per page",
       "total": "Total"

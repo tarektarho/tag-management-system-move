@@ -29,7 +29,9 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
       await addTag({
         id: generateUUID(),
         name: newTagValue,
-        deleted: false
+        deleted: false,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
       })
       setNewTagValue("")
       setModalOpen(false)

@@ -15,6 +15,7 @@
     },
     "tagList": {
       "createdAt": "Aangemaakt op",
+      "updatedAt": "Bijgewerkt op",
       "actions": "Acties",
       "rowsPerPage": "Rows per pagina.",
       "total": "Totaal"

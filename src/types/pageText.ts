@@ -17,6 +17,7 @@ export interface IPageText {
     }
     tagList: {
       createdAt: string
+      updatedAt: string
       actions: string
       rowsPerPage: string
       total: string

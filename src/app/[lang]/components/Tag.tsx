@@ -23,7 +23,8 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
     await editTag({
       id: tag.id,
       name: tagToEdit,
-      deleted: false
+      deleted: false,
+      updatedAt: new Date().toISOString()
     })
     setOpenModalEdit(false)
     router.refresh()
@@ -39,6 +40,7 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
     <tr key={tag.id}>
       <td className='w-64'>{tag.name}</td>
       <td className='w-64'>{formatISODateToHumanReadable(tag.createdAt)}</td>
+      <td className='w-64'>{formatISODateToHumanReadable(tag.updatedAt)}</td>
       <td className='flex gap-5'>
         <FiEdit
           onClick={() => setOpenModalEdit(true)}
