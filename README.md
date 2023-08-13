@@ -32,3 +32,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+API using: mockapi
+Endpoint: https://64d748352a017531bc1319a6.mockapi.io/api/v1/
+
+Minimal i18n routing and translations
+https://github.com/vercel/next.js/tree/canary/examples/app-dir-i18n-routing
+
+UILib:
+https://daisyui.com
+
+## Todos
+
+- [ ] Implement Auth
+- [ ] Soft Delete
+- [ ] Dark/Light Mode
+- [ ] Split the style per component
+- [ ] Add More test

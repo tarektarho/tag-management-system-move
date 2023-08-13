@@ -18,10 +18,24 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.header {
+  background: #2a323c;
+  padding: 60px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.btn-neutral {
+  color: white;
 }
