@@ -1,0 +1,23 @@
+{
+  "page": {
+    "tag": {
+      "editTag": "Bewerk tag",
+      "deleteTagConfiramtion": "Weet je zeker dat je deze tag wilt verwijderen?",
+      "save": "Opslaan",
+      "yes": "Ja",
+      "typeHere": "Type hier..."
+    },
+    "addTag": {
+      "addNewTag": "Nieuwe tag toevoegen",
+      "save": "Opslaan",
+      "failedToAddNewTag": "Tag naam kan niet leeg zijn",
+      "typeHere": "Typ hier..."
+    },
+    "tagList": {
+      "createdAt": "Aangemaakt op",
+      "actions": "Acties",
+      "rowsPerPage": "Rows per pagina.",
+      "total": "Totaal"
+    }
+  }
+}

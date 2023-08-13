@@ -1,0 +1,23 @@
+{
+  "page": {
+    "tag": {
+      "editTag": "Edit tag",
+      "deleteTagConfiramtion": "Are you sure, you want to delete this tag?",
+      "save": "Save",
+      "yes": "Yes",
+      "typeHere": "Type here..."
+    },
+    "addTag": {
+      "addNewTag": "Add new tag",
+      "save": "Save",
+      "failedToAddNewTag": "Tag name cannot be empty",
+      "typeHere": "Type here..."
+    },
+    "tagList": {
+      "createdAt": "Created At",
+      "actions": "Actions",
+      "rowsPerPage": "Rows per page",
+      "total": "Total"
+    }
+  }
+}
