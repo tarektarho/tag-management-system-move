@@ -13,24 +13,12 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      screens: {
-        '2xl': { 'max': '1535px' },
-        // => @media (max-width: 1535px) { ... }
-
-        'xl': { 'max': '1279px' },
-        // => @media (max-width: 1279px) { ... }
-
-        'lg': { 'max': '1023px' },
-        // => @media (max-width: 1023px) { ... }
-
-        'md': { 'max': '767px' },
-        // => @media (max-width: 767px) { ... }
-
-        'sm': { 'max': '639px' },
-        // => @media (max-width: 639px) { ... }
-      }
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    utils: true, // adds responsive and modifier utility classes
+    logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
+  },
 }
 export default config
