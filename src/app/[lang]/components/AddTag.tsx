@@ -4,11 +4,11 @@ import Modal from "./Modal"
 import { FormEventHandler, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { addTag } from "../../../api/api"
-import { generateUUID } from "../../../utils/index"
+import { generateUUID, getCurrentISODate } from "../../../utils/index"
 import { IPageText } from "../../../types/pageText"
 
 interface AddTagProps {
-  text: IPageText['page']['addTag']
+  text: IPageText['page']
 }
 
 const AddTag: React.FC<AddTagProps> = ({ text }) => {
@@ -25,20 +25,16 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
       return
     }
 
-    try {
-      await addTag({
-        id: generateUUID(),
-        name: newTagValue,
-        deleted: false,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      })
-      setNewTagValue("")
-      setModalOpen(false)
-      router.refresh()
-    } catch (error) {
-      throw new Error("Something went wrong")
-    }
+    await addTag({
+      id: generateUUID(),
+      name: newTagValue,
+      deleted: false,
+      createdAt: getCurrentISODate(),
+      updatedAt: getCurrentISODate()
+    })
+    setNewTagValue("")
+    setModalOpen(false)
+    router.refresh()
 
   }
 
@@ -49,29 +45,29 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
   }, [modalOpen])
 
   return (
-    <div>
+    <div className="add-tag-container">
       <button data-testid="open-add-new-tag-modal" onClick={() => setModalOpen(true)} className="btn btn-neutral w-full">
-        {text.addNewTag} <AiOutlinePlus className='ml-2' size={18} />
+        {text.addTag.addNewTag} <AiOutlinePlus className='ml-2' size={18} />
       </button>
       <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <form onSubmit={handleSubmitNewTag}>
-          <h3 className="font-bold text-lg">{text.addNewTag}</h3>
+          <h3 className="font-bold text-lg">{text.addTag.addNewTag}</h3>
           <div className="modal-action">
             <input value={newTagValue}
               onChange={(e) => { setNewTagValue(e.target.value); setTagEmptyError(false) }}
 
               type='text'
-              placeholder={text.typeHere}
-              className={`input input-bordered w-full ${tagEmptyError ? "border-red-600" : "" // Add border color class conditionally
+              placeholder={text.addTag.typeHere}
+              className={`input input-bordered w-full ${tagEmptyError ? "border-red-600" : ""
                 }`}
             />
 
             <button data-testid="submit-form-button" type="submit" className="btn btn-neutral">
-              {text.save}
+              {text.addTag.save}
             </button>
           </div>
           {tagEmptyError && (
-            <span className="flex text-red-600">{text.failedToAddNewTag}</span>
+            <span className="flex text-red-600">{text.erorrs.nameCannotBeEmpty}</span>
           )}
         </form>
       </Modal>

@@ -1,30 +1,36 @@
 "use client"
 import { ITag } from "../../../types/tags"
-import { FormEventHandler, useState } from "react"
+import { FormEventHandler, useEffect, useState } from "react"
 import { FiEdit, FiTrash2 } from "react-icons/fi"
 import { useRouter } from "next/navigation"
 import Modal from "./Modal"
 import { deleteTag, editTag } from "@/api/api"
-import { formatISODateToHumanReadable } from '../../../utils/index'
+import { formatISODateToHumanReadable, getCurrentISODate } from "../../../utils/index"
 import { IPageText } from "@/types/pageText"
 
 interface TagProps {
   tag: ITag,
-  text: IPageText['page']['tag']
+  text: IPageText['page']
 }
 const Tag: React.FC<TagProps> = ({ tag, text }) => {
   const router = useRouter()
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false)
   const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false)
   const [tagToEdit, setTagToEdit] = useState<string>(tag.name)
+  const [tagEmptyError, setTagEmptyError] = useState<boolean>(false)
 
   const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
+
+    if (!tagToEdit) {
+      setTagEmptyError(true)
+      return
+    }
     await editTag({
       id: tag.id,
       name: tagToEdit,
       deleted: false,
-      updatedAt: new Date().toISOString()
+      updatedAt: getCurrentISODate()
     })
     setOpenModalEdit(false)
     router.refresh()
@@ -36,13 +42,20 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
     router.refresh()
   }
 
+  useEffect(() => {
+    if (!openModalEdit) {
+      setTagEmptyError(false) // Reset tagEmptyError when modal is closed
+    }
+  }, [openModalEdit])
+
   return (
-    <tr key={tag.id}>
+    <tr key={tag.id} style={{ height: "48px" }}>
       <td className='w-64'>{tag.name}</td>
       <td className='w-64'>{formatISODateToHumanReadable(tag.createdAt)}</td>
       <td className='w-64'>{formatISODateToHumanReadable(tag.updatedAt)}</td>
       <td className='flex gap-5'>
         <FiEdit
+          data-testid="edit-icon"
           onClick={() => setOpenModalEdit(true)}
           cursor='pointer'
           className='text-sky-500'
@@ -50,22 +63,27 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
         />
         <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
           <form onSubmit={handleSubmitEditTodo}>
-            <h3 className='font-bold text-lg'>{text.editTag}</h3>
+            <h3 className='font-bold text-lg'>{text.tag.editTag}</h3>
             <div className='modal-action'>
               <input
                 value={tagToEdit}
                 onChange={(e) => setTagToEdit(e.target.value)}
                 type='text'
-                placeholder={text.typeHere}
-                className='input input-bordered w-full'
+                placeholder={text.tag.typeHere}
+                className={`input input-bordered w-full ${tagEmptyError ? "border-red-600" : ""
+                  }`}
               />
               <button type='submit' className='btn btn-neutral'>
-                {text.save}
+                {text.tag.save}
               </button>
             </div>
+            {tagEmptyError && (
+              <span className="flex text-red-600">{text.erorrs.nameCannotBeEmpty}</span>
+            )}
           </form>
         </Modal>
         <FiTrash2
+          data-testid="delete-icon"
           onClick={() => setOpenModalDeleted(true)}
           cursor='pointer'
           className='text-rose-600'
@@ -73,11 +91,11 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
         />
         <Modal modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>
           <h3 className='text-lg'>
-            {text.deleteTagConfiramtion}
+            {text.tag.deleteTagConfiramtion}
           </h3>
           <div className='modal-action'>
             <button onClick={() => handleDeleteTask(tag.id)} className='btn btn-neutral'>
-              {text.yes}
+              {text.tag.yes}
             </button>
           </div>
         </Modal>
