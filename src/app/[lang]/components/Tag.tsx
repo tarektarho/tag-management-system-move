@@ -70,7 +70,7 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
                 onChange={(e) => setTagToEdit(e.target.value)}
                 type='text'
                 placeholder={text.tag.typeHere}
-                className={`input input-bordered w-full ${tagEmptyError ? "border-red-600" : ""
+                className={`input input-bordered w-full ${tagEmptyError ? "border-red-700" : ""
                   }`}
               />
               <button type='submit' className='btn btn-neutral'>
@@ -78,7 +78,7 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
               </button>
             </div>
             {tagEmptyError && (
-              <span className="flex text-red-600">{text.erorrs.nameCannotBeEmpty}</span>
+              <span className="flex text-red-700">{text.erorrs.nameCannotBeEmpty}</span>
             )}
           </form>
         </Modal>
@@ -86,7 +86,7 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
           data-testid="delete-icon"
           onClick={() => setOpenModalDeleted(true)}
           cursor='pointer'
-          className='text-rose-600'
+          className='text-rose-700'
           size={23}
         />
         <Modal modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>

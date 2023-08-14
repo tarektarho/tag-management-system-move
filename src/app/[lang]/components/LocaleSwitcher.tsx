@@ -15,7 +15,7 @@ const LocaleSwitcher = () => {
           <li className="text-sm" key={locale}>
             <Link
               href={redirectedPathName(locale, pathName)}
-              className='rounded-md border bg-black px-3 py-2 text-white'
+              className='rounded-md border bg-black px-3 py-2 text-white glass'
             >
               {locale.toLocaleUpperCase()}
             </Link>
