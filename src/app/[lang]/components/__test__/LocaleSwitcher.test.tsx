@@ -14,7 +14,7 @@ describe('LocaleSwitcher Component', () => {
   })
 
   it('renders the locale switcher with correct link is EN', () => {
-    // @ts-ignore locales are readonly
+    // @ts-ignore
     usePathname.mockReturnValue('/en')
     //usePathname.
     render(<LocaleSwitcher />)
@@ -30,7 +30,7 @@ describe('LocaleSwitcher Component', () => {
   })
 
   it('renders the locale switcher with correct link is NL', () => {
-    // @ts-ignore locales are readonly
+    // @ts-ignore
     usePathname.mockReturnValue('/nl')
     //usePathname.
     render(<LocaleSwitcher />)
