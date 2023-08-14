@@ -1,11 +1,14 @@
 import { ITag } from "@/types/tags"
 import { STATUS_OK, BASE_URL, ERROR_INVALID_TAG } from "../utils/constants"
 
-
+/**
+ * Fetches all tags from the server.
+ * @returns {Promise<ITag[]>} A promise that resolves to an array of tag objects.
+ */
 export const getAllTags = async (): Promise<ITag[]> => {
   try {
     const response = await fetch(`${BASE_URL}/tags`, {
-      cache: "no-cache"
+      cache: "no-store" // Fetches the resource from the remote server on every request
     })
 
     if (!response.ok) {
@@ -23,7 +26,11 @@ export const getAllTags = async (): Promise<ITag[]> => {
   }
 }
 
-
+/**
+ * Adds a new tag to the server.
+ * @param {ITag} tag - The tag object to be added.
+ * @returns {Promise<ITag>} A promise that resolves to the added tag object.
+ */
 export const addTag = async (tag: ITag): Promise<ITag> => {
   const name = tag.name.trim()
   if (!tag || name.length === 0) {
@@ -44,15 +51,21 @@ export const addTag = async (tag: ITag): Promise<ITag> => {
     }
 
     return response.json()
-
   } catch (error) {
     throw error
   }
 }
 
-
-//todo optimize and test
+/**
+ * Edits an existing tag on the server.
+ * @param {ITag} tag - The tag object to be edited.
+ * @returns {Promise<ITag>} A promise that resolves to the edited tag object.
+ */
 export const editTag = async (tag: ITag): Promise<ITag> => {
+  const name = tag.name.trim()
+  if (!tag || name.length === 0) {
+    throw new Error(ERROR_INVALID_TAG)
+  }
 
   try {
     const response = await fetch(`${BASE_URL}/tags/${tag.id}`, {
@@ -72,8 +85,12 @@ export const editTag = async (tag: ITag): Promise<ITag> => {
   }
 }
 
-//todo optimize and test
-export const deleteTag = async (id: string): Promise<any> => {
+/**
+ * Deletes a tag from the server.
+ * @param {string} id - The ID of the tag to be deleted.
+ * @returns {Promise<void>} A promise that resolves when the tag is deleted.
+ */
+export const deleteTag = async (id: string): Promise<void> => {
   try {
     await fetch(`${BASE_URL}/tags/${id}`, {
       method: 'DELETE',
