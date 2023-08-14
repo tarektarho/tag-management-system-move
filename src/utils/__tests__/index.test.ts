@@ -21,6 +21,20 @@ describe('formatISODateToHumanReadable', () => {
   })
 })
 
+describe('getCurrentISODate', () => {
+  it('returns the current ISO date in the correct format', () => {
+    const originalDate = Date // Save the original Date constructor
+    const mockDate = new Date('2023-08-15T12:34:56.789Z')
+    global.Date = jest.fn(() => mockDate) as unknown as typeof global.Date // Replace global Date with mockDate
+
+    const isoDate = Utils.getCurrentISODate()
+
+    expect(isoDate).toBe('2023-08-15T12:34:56.789Z')
+
+    global.Date = originalDate // Restore the original Date constructor
+  })
+})
+
 
 describe('redirectedPathName Utility Method', () => {
   it('generates the correct redirected path with valid pathName', () => {
