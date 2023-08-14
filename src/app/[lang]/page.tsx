@@ -33,9 +33,14 @@ const Home = async ({
   return (
     <div className='flex min-h-screen flex-col items-center p-24'>
       <div className='mb-10 text-center lg:max-w-5xl lg:w-full lg:grid-cols-4'>
-        <AddTag text={page.addTag} />
+        <AddTag text={page} />
       </div>
-      <TagList text={page} tags={orderTagsByDescendingUpdatedAt(tags)} />
+      {/* Handle empty list */}
+      {tags.length !== 0 ? (<div className="tag-content-container">
+        <TagList text={page} tags={orderTagsByDescendingUpdatedAt(tags)} />
+      </div>) : (<div className="mockup-code">
+        <pre><code>{page.emptyStateMessage}</code></pre>
+      </div>)}
     </div>
   )
 }
