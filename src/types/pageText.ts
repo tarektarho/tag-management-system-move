@@ -1,8 +1,8 @@
 export interface IPageText {
   page: {
+    emptyStateMessage: string,
     tag: {
       addNewTag: string
-      failedToAddNewTag: string | undefined
       editTag: string
       deleteTagConfiramtion: string
       save: string
@@ -12,7 +12,6 @@ export interface IPageText {
     addTag: {
       addNewTag: string
       save: string
-      failedToAddNewTag: string
       typeHere: string
     }
     tagList: {
@@ -21,6 +20,9 @@ export interface IPageText {
       actions: string
       rowsPerPage: string
       total: string
+    },
+    erorrs: {
+      nameCannotBeEmpty: string
     }
   }
 }

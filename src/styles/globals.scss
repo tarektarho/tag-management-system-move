@@ -6,10 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
+  @media (prefers-color-scheme: dark) {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
@@ -18,21 +16,19 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 .header {
-  background: #2a323c;
+  background: hsl(var(--n));
   font-size: 20px;
-}
 
-.nav {
-  display: flex;
-  align-items: center;
-}
+  .nav {
+    display: flex;
+    align-items: center;
 
-.btn-neutral {
-  color: white;
+    .btn-neutral {
+      color: white;
+    }
+  }
 }
