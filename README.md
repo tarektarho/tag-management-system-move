@@ -71,4 +71,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## Contact
 
-For inquiries or feedback, please reach out to [contact@example.com](mailto:contact@example.com).
+For inquiries or feedback, please reach out to [tarek_tarho@hotmail.com](tarek_tarho@hotmail.com).
