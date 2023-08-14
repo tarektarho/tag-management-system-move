@@ -9,6 +9,9 @@ export const generateUUID = (): string => {
   })
 }
 
+export const getCurrentISODate = (): string => {
+  return new Date().toISOString()
+}
 
 export const formatISODateToHumanReadable = (isoDateString: string): string => {
   const isoDate = new Date(isoDateString)
