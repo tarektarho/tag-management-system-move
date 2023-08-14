@@ -1,5 +1,6 @@
 {
   "page": {
+    "emptyStateMessage": "Je taglijst is op dit moment leeg. Klik op de knop Nieuwe tag toevoegen om tags aan je lijst toe te voegen.",
     "tag": {
       "editTag": "Bewerk tag",
       "deleteTagConfiramtion": "Weet je zeker dat je deze tag wilt verwijderen?",
@@ -10,7 +11,6 @@
     "addTag": {
       "addNewTag": "Nieuwe tag toevoegen",
       "save": "Opslaan",
-      "failedToAddNewTag": "Tag naam kan niet leeg zijn",
       "typeHere": "Typ hier..."
     },
     "tagList": {
@@ -19,6 +19,9 @@
       "actions": "Acties",
       "rowsPerPage": "Rows per pagina.",
       "total": "Totaal"
+    },
+    "erorrs": {
+      "nameCannotBeEmpty": "Tag naam kan niet leeg zijn"
     }
   }
 }
