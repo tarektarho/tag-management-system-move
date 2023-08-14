@@ -1,22 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tag Management App
+
+The Tag Management App is a simple yet powerful tool that empowers users to efficiently manage their tags. With features such as tag addition, editing, deletion, and listing, this app offers a streamlined experience for staying organized and in control.
+
+## Features
+
+- **Effortless Tag Management:** Easily add, edit, and delete tags through a user-friendly interface.
+
+- **Tag Listing:** Quickly view all your tags in one organized place, making it simple to keep track of your tagging system.
+
+- **Seamless Sync:** The app synchronizes your local tags with a back-end API, ensuring your data is always up-to-date.
+
+## Tech Stack
+
+- **Next.js 13:** Leveraging the capabilities of Next.js, the app delivers a smooth and responsive user experience.
+
+- **TypeScript:** Benefit from strong typing to enhance code quality and reduce errors.
+
+- **Jest + Testing Library:** Rigorous testing ensures reliable functionality and a bug-free experience for users.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Configure the back-end API endpoint in `src/config.js`.
+4. Start the development server using `npm run dev`.
+5. Open your browser and navigate to `http://localhost:3000`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## API Usage
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- API: [mockapi](https://64d748352a017531bc1319a6.mockapi.io/api/v1/)
+- Endpoint: `https://64d748352a017531bc1319a6.mockapi.io/api/v1/`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Internationalization (i18n) and Routing
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The app includes minimal i18n routing and translations. For more information, refer to the [Next.js example](https://github.com/vercel/next.js/tree/canary/examples/app-dir-i18n-routing).
+
+## UI Library
+
+The app uses [DaisyUI](https://daisyui.com) as the UI library to enhance its appearance and user experience.
+
+## Styling
+
+Styled components are not recommended in Next.js 13 due to potential issues with loading styles. Refer to the [Docs](https://nextjs.org/docs/app/building-your-application/styling/css-in-js#styled-components) for a workaround if needed.
+
+## Todos
+
+- [ ] Implement Welcome Popup
+- [ ] Implement Auth
+- [ ] Soft Delete
+- [ ] Dark/Light Mode
+- [ ] Split the style per component
+- [ ] Add More tests
 
 ## Learn More
 
@@ -27,25 +61,14 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please follow the guidelines in the `CONTRIBUTING.md` file.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
 
-API using: mockapi
-Endpoint: https://64d748352a017531bc1319a6.mockapi.io/api/v1/
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-Minimal i18n routing and translations
-https://github.com/vercel/next.js/tree/canary/examples/app-dir-i18n-routing
+## Contact
 
-UILib:
-https://daisyui.com
-
-## Todos
-
-- [ ] Implement Auth
-- [ ] Soft Delete
-- [ ] Dark/Light Mode
-- [ ] Split the style per component
-- [ ] Add More test
+For inquiries or feedback, please reach out to [contact@example.com](mailto:contact@example.com).
