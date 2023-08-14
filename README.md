@@ -29,7 +29,7 @@ The Tag Management App is a simple yet powerful tool that empowers users to effi
 ## API Usage
 
 - API: [mockapi](https://64d748352a017531bc1319a6.mockapi.io/api/v1/)
-- Endpoint: `https://64d748352a017531bc1319a6.mockapi.io/api/v1/`
+- Endpoint: `https://64d748352a017531bc1319a6.mockapi.io/api/v1/tags`
 
 ## Internationalization (i18n) and Routing
 
