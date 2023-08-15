@@ -1,5 +1,6 @@
 import React from "react"
 
+// Custom loader
 const Loading = () => {
   return (
     <div className="w-full h-screen flex justify-center">

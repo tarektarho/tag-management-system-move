@@ -4,20 +4,30 @@ import { ITag } from "../../../types/tags"
 import Tag from "./Tag"
 import { IPageText } from "../../../types/pageText"
 
+// Props interface for the TagList component
 interface TagProps {
   tags: ITag[]
   text: IPageText['page']
 }
 
-export const ITEMS_PER_PAGE = 10
+// Constant defining the number of items per page
+export const ITEMS_PER_PAGE = 10 //todo move to const file
 
-const TagList: React.FC<TagProps> = ({ tags, text }) => { //todo handle case when tags are empty
+const TagList: React.FC<TagProps> = ({ tags, text }) => {
+  // State to manage the current page being displayed
   const [currentPage, setCurrentPage] = useState(1)
 
+  // Calculate the total number of pages based on the number of tags and items per page
   const totalPages = Math.ceil(tags.length / ITEMS_PER_PAGE)
+
+  // Calculate the starting index of visible tags based on the current page
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
+
+  // Slice the tags array to display the visible tags for the current page
   const visibleTags = tags.slice(startIndex, startIndex + ITEMS_PER_PAGE)
 
+
+  // Handler for changing the current page
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber)
   }

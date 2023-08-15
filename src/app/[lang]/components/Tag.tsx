@@ -8,24 +8,31 @@ import { deleteTag, editTag } from "@/api/api"
 import { formatISODateToHumanReadable, getCurrentISODate } from "../../../utils/index"
 import { IPageText } from "@/types/pageText"
 
+// Define component's props interface
 interface TagProps {
   tag: ITag,
   text: IPageText['page']
 }
 const Tag: React.FC<TagProps> = ({ tag, text }) => {
+  // Router instance for navigation
   const router = useRouter()
+
+  // State variables for modal states and form values
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false)
   const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false)
   const [tagToEdit, setTagToEdit] = useState<string>(tag.name)
   const [tagEmptyError, setTagEmptyError] = useState<boolean>(false)
 
-  const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
+  // Form submission handler for tag editing
+  const handleSubmitEditTag: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
 
+    // Check for empty tag name
     if (!tagToEdit) {
       setTagEmptyError(true)
       return
     }
+    // Update the tag and close the edit modal
     await editTag({
       id: tag.id,
       name: tagToEdit,
@@ -33,15 +40,18 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
       updatedAt: getCurrentISODate()
     })
     setOpenModalEdit(false)
-    router.refresh()
+    router.refresh() // Refresh the component
   }
 
-  const handleDeleteTask = async (id: string) => {
-    await deleteTag(id)
+  // Delete tag handler
+  const handleDeleteTag = async () => {
+    // Delete the tag and close the delete modal
+    await deleteTag(tag.id)
     setOpenModalDeleted(false)
-    router.refresh()
+    router.refresh() // Refresh the component
   }
 
+  // Effect to reset tagEmptyError when edit modal is closed
   useEffect(() => {
     if (!openModalEdit) {
       setTagEmptyError(false) // Reset tagEmptyError when modal is closed
@@ -62,7 +72,7 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
           size={23}
         />
         <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
-          <form onSubmit={handleSubmitEditTodo}>
+          <form onSubmit={handleSubmitEditTag}>
             <h3 className='font-bold text-lg'>{text.tag.editTag}</h3>
             <div className='modal-action'>
               <input
@@ -94,7 +104,7 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
             {text.tag.deleteTagConfiramtion}
           </h3>
           <div className='modal-action'>
-            <button onClick={() => handleDeleteTask(tag.id)} className='btn btn-neutral'>
+            <button onClick={() => handleDeleteTag()} className='btn btn-neutral'>
               {text.tag.yes}
             </button>
           </div>

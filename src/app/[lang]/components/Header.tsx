@@ -9,6 +9,7 @@ const Header: React.FC = () => {
         <div className="container flex">
           <h1>Tag Managment System</h1>
         </div>
+        {/* Include the LocaleSwitcher component to allow language switching */}
         <LocaleSwitcher />
       </nav>
     </header>

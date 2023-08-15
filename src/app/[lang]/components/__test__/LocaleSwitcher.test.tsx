@@ -16,7 +16,6 @@ describe('LocaleSwitcher Component', () => {
   it('renders the locale switcher with correct link is EN', () => {
     // @ts-ignore
     usePathname.mockReturnValue('/en')
-    //usePathname.
     render(<LocaleSwitcher />)
 
     const localeSwitcher = screen.getByRole('list')
@@ -32,7 +31,6 @@ describe('LocaleSwitcher Component', () => {
   it('renders the locale switcher with correct link is NL', () => {
     // @ts-ignore
     usePathname.mockReturnValue('/nl')
-    //usePathname.
     render(<LocaleSwitcher />)
 
     const localeLinks = screen.getAllByRole('link')

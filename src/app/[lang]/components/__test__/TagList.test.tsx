@@ -4,6 +4,7 @@ import { mockTag, mockText } from "./Tag.test"
 import { ITag } from "@/types/tags"
 import Tag from "../Tag"
 
+// Mock the useRouter function
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn().mockReturnValue({
     refresh: jest.fn(),
@@ -17,6 +18,7 @@ jest.mock("../../../../api/api", () => ({
   deleteTag: jest.fn(),
 }))
 
+// Create mock tags data
 const mockTags: ITag[] = [...Array(ITEMS_PER_PAGE)].map((_, i) => ({
   id: `${i + 1}`,
   name: `Tag ${i + 1}`,
@@ -25,6 +27,7 @@ const mockTags: ITag[] = [...Array(ITEMS_PER_PAGE)].map((_, i) => ({
   deleted: false,
 }))
 
+// Function to render the mocked TagList component
 const mockedTagListComponent = () =>
   render(
     // @ts-ignore
@@ -40,6 +43,7 @@ describe("TagList component", () => {
   })
 
   it("renders tags and pagination controls correctly", () => {
+    // Render the mocked TagList component
     mockedTagListComponent()
 
     // Check if tags are rendered correctly
@@ -56,19 +60,21 @@ describe("TagList component", () => {
   })
 
   it("displays correct row count per page", () => {
+    // Render the mocked TagList component
     mockedTagListComponent()
     const tableRows = screen.queryAllByRole("row")
     expect(tableRows).toHaveLength(ITEMS_PER_PAGE + 1) // Including the table header
   })
 
-
   it.skip('displays correct total count', () => {
+    // Render the mocked TagList component
     mockedTagListComponent()
     const totalText = screen.getByText(`Total: ${mockTags.length}`)
     expect(totalText).toBeInTheDocument()
   })
 
   it('hides pagination buttons if there are no tags', () => {
+    // Render TagList with empty tags
     render(<TagList tags={[]} text={mockText} />)
     const paginationButtons = screen.queryAllByTestId('pagination-button')
     expect(paginationButtons).toHaveLength(0)
