@@ -1,3 +1,4 @@
+import { ITag } from "@/types/tags"
 import * as Utils from "../index"
 
 describe("Utils", () => {
@@ -53,5 +54,52 @@ describe('redirectedPathName Utility Method', () => {
     const newPath = Utils.redirectedPathName(locale, pathName)
 
     expect(newPath).toEqual('/')
+  })
+})
+
+
+describe('orderTagsByDescendingUpdatedAt function', () => {
+  it('orders tags by descending updatedAt timestamp', () => {
+    // Create mock tags with different updatedAt timestamps
+    const tags: ITag[] = [
+      { id: '1', name: 'Tag 1', updatedAt: '2023-08-15T10:00:00.000Z' },
+      { id: '2', name: 'Tag 2', updatedAt: '2023-08-15T09:00:00.000Z' },
+      { id: '3', name: 'Tag 3', updatedAt: '2023-08-15T11:00:00.000Z' },
+    ]
+
+    // Call the orderTagsByDescendingUpdatedAt function
+    const orderedTags = Utils.orderTagsByDescendingUpdatedAt(tags)
+
+    // Verify that the tags are correctly ordered by updatedAt timestamp
+    expect(orderedTags).toEqual([
+      { id: '3', name: 'Tag 3', updatedAt: '2023-08-15T11:00:00.000Z' },
+      { id: '1', name: 'Tag 1', updatedAt: '2023-08-15T10:00:00.000Z' },
+      { id: '2', name: 'Tag 2', updatedAt: '2023-08-15T09:00:00.000Z' },
+    ])
+  })
+
+  it('handles empty array', () => {
+    // Call the orderTagsByDescendingUpdatedAt function with an empty array
+    const orderedTags = Utils.orderTagsByDescendingUpdatedAt([])
+
+    // Verify that the result is an empty array as well
+    expect(orderedTags).toEqual([])
+  })
+
+  it('does not modify the original array', () => {
+    // Create mock tags
+    const originalTags = [
+      { id: '1', name: 'Tag 1', updatedAt: '2023-08-15T10:00:00.000Z' },
+      { id: '2', name: 'Tag 2', updatedAt: '2023-08-15T09:00:00.000Z' },
+    ]
+
+    // Call the orderTagsByDescendingUpdatedAt function
+    Utils.orderTagsByDescendingUpdatedAt(originalTags)
+
+    // Verify that the original array remains unchanged
+    expect(originalTags).toEqual([
+      { id: '1', name: 'Tag 1', updatedAt: '2023-08-15T10:00:00.000Z' },
+      { id: '2', name: 'Tag 2', updatedAt: '2023-08-15T09:00:00.000Z' },
+    ])
   })
 })
