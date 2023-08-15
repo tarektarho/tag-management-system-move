@@ -28,9 +28,8 @@ https://tag-management-system-move.vercel.app/en
 
 1. Clone this repository.
 2. Install dependencies using `npm install`.
-3. Configure the back-end API endpoint in `src/config.js`.
-4. Start the development server using `npm run dev`.
-5. Open your browser and navigate to `http://localhost:3000`.
+3. Start the development server using `npm run dev`.
+4. Open your browser and navigate to `http://localhost:3000`.
 
 ## API Usage
 
