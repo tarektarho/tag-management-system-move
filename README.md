@@ -49,6 +49,13 @@ The app uses [DaisyUI](https://daisyui.com) as the UI library to enhance its app
 
 Styled components are not recommended in Next.js 13 due to potential issues with loading styles. Refer to the [Docs](https://nextjs.org/docs/app/building-your-application/styling/css-in-js#styled-components) for a workaround if needed.
 
+
+
+## Code Coverage
+
+![Screenshot 2023-08-15 at 10 50 50](https://github.com/tarektarho/tag-management-system-move/assets/18512695/91860ae6-381d-409e-bc9c-aec887ba449f)
+
+
 ## Todos
 
 - [ ] Implement Welcome Popup
