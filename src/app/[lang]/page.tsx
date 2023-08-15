@@ -17,7 +17,7 @@ const Home = async ({
   const { page }: IPageText = await getDictionary(lang) as any
 
   // Fetch all tags using the getAllTags function
-  const tags = await getAllTags()
+  const tags = await getAllTags() //Extracting the method logic for testing
 
   return (
     <div className='flex min-h-screen flex-col items-center p-24'>
