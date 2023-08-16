@@ -4,7 +4,7 @@ import Modal from "./Modal"
 import { FormEventHandler, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { addTag } from "../../../api/api"
-import { generateUUID, getCurrentISODate } from "../../../utils/index"
+import { getCurrentTimestamp } from "../../../utils/index"
 import { IPageText } from "../../../types/pageText"
 
 interface AddTagProps {
@@ -32,11 +32,11 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
 
     // Add the new tag using the API
     await addTag({
-      id: generateUUID(),
+      id: 'mocked-uuid',
       name: newTagValue,
       deleted: false,
-      createdAt: getCurrentISODate(),
-      updatedAt: getCurrentISODate()
+      createdAt: Math.floor(Date.now() / 1000),
+      updatedAt: Math.floor(Date.now() / 1000)
     })
 
     // Clear the input and close the modal

@@ -1,6 +1,6 @@
 import { ITag } from "@/types/tags"
 import { BASE_URL, ERROR_INVALID_TAG } from "../utils/constants"
-import { formatISODateToHumanReadable } from "../utils/index"
+import { formatTimestampToHumanReadable } from "../utils/index"
 
 /**
  * Fetches all tags from the server.
@@ -8,8 +8,13 @@ import { formatISODateToHumanReadable } from "../utils/index"
  */
 
 export const getAllTags = async (): Promise<ITag[]> => {
+  const url = new URL(`${BASE_URL}/tags`)
+  url.searchParams.append('sortBy', 'updatedAt')
+  url.searchParams.append('order', 'desc')
   try {
-    const response = await fetch(`${BASE_URL}/tags`, {
+    const response = await fetch(url.toString(), {
+      method: 'GET',
+      headers: { 'content-type': 'application/json' },
       cache: 'no-store', // Fetches the resource from the remote server on every request
     })
 
@@ -21,8 +26,8 @@ export const getAllTags = async (): Promise<ITag[]> => {
 
     const formattedData: ITag[] = responseData.map((tag: ITag) => ({
       ...tag,
-      createdAt: formatISODateToHumanReadable(tag.createdAt),
-      updatedAt: formatISODateToHumanReadable(tag.updatedAt),
+      createdAt: formatTimestampToHumanReadable(tag.createdAt),
+      updatedAt: formatTimestampToHumanReadable(tag.updatedAt),
     }))
 
     return formattedData

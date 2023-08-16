@@ -3,7 +3,7 @@ import * as API from "../../../../api/api"
 import Tag from "../Tag"
 import { ITag } from "@/types/tags"
 import { IPageText } from "@/types/pageText"
-import { formatISODateToHumanReadable } from "../../../../utils/index"
+import { getCurrentTimestamp, formatTimestampToHumanReadable } from "../../../../utils/index"
 
 
 // Mock the api module
@@ -21,8 +21,8 @@ jest.mock('next/navigation', () => ({
 export const mockTag: ITag = {
   id: '1',
   name: 'Tag 1',
-  createdAt: formatISODateToHumanReadable('2023-08-12T15:48:52.520Z'),
-  updatedAt: formatISODateToHumanReadable('2023-08-13T10:00:00.000Z'),
+  createdAt: '14 August 2023 at 23:08',
+  updatedAt: '14 August 2023 at 23:02',
   deleted: false
 }
 
@@ -108,7 +108,7 @@ describe("Tag Component", () => {
         id: "1",
         name: "Updated Tag Name",
         deleted: false,
-        updatedAt: expect.any(String),
+        updatedAt: getCurrentTimestamp(),
       })
     })
 

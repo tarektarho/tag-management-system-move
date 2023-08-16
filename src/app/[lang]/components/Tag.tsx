@@ -5,7 +5,7 @@ import { FiEdit, FiTrash2 } from "react-icons/fi"
 import { useRouter } from "next/navigation"
 import Modal from "./Modal"
 import { deleteTag, editTag } from "@/api/api"
-import { formatISODateToHumanReadable, getCurrentISODate } from "../../../utils/index"
+import { getCurrentTimestamp } from "../../../utils/index"
 import { IPageText } from "@/types/pageText"
 
 // Define component's props interface
@@ -37,7 +37,7 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
       id: tag.id,
       name: tagToEdit,
       deleted: false,
-      updatedAt: getCurrentISODate()
+      updatedAt: getCurrentTimestamp()
     })
     setOpenModalEdit(false)
     router.refresh() // Refresh the component
