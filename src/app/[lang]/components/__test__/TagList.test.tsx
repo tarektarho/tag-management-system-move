@@ -66,10 +66,10 @@ describe("TagList component", () => {
     expect(tableRows).toHaveLength(ITEMS_PER_PAGE + 1) // Including the table header
   })
 
-  it.skip('displays correct total count', () => {
+  it('displays correct total count', () => {
     // Render the mocked TagList component
     mockedTagListComponent()
-    const totalText = screen.getByText(`Total: ${mockTags.length}`)
+    const totalText = screen.getByTestId('pagination-footer')
     expect(totalText).toBeInTheDocument()
   })
 

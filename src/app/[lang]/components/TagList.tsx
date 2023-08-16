@@ -66,7 +66,7 @@ const TagList: React.FC<TagProps> = ({ tags, text }) => {
             </button>
           ))}
         </div>
-        <span>{text.tagList.rowsPerPage} | {text.tagList.total}: {tags.length}</span>
+        <span data-testid="pagination-footer">{text.tagList.rowsPerPage} | {text.tagList.total}: {tags.length}</span>
       </div>
     </div>
   )
