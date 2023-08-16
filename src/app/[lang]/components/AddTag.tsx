@@ -35,8 +35,8 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
       id: 'mocked-uuid',
       name: newTagValue,
       deleted: false,
-      createdAt: Math.floor(Date.now() / 1000),
-      updatedAt: Math.floor(Date.now() / 1000)
+      createdAt: getCurrentTimestamp(),
+      updatedAt: getCurrentTimestamp()
     })
 
     // Clear the input and close the modal

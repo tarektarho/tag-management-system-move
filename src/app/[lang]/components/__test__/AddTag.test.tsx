@@ -2,12 +2,12 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import AddTag from "../AddTag"
 import * as API from "../../../../api/api"
 import { IPageText } from "@/types/pageText"
+import { getCurrentTimestamp } from "../../../../utils/index"
 
 
 // Mock the generateUUID function
 jest.mock('../../../../utils/index', () => ({
-  generateUUID: jest.fn().mockReturnValue('mocked-uuid'), // Provide a fixed UUID value
-  getCurrentISODate: jest.fn().mockReturnValue('2023-08-15T12:34:56.789Z')
+  getCurrentTimestamp: jest.fn().mockReturnValue(1692176950)
 }))
 
 // Mock the useRouter hook
@@ -22,7 +22,6 @@ jest.mock('../../../../api/api', () => ({
 }))
 
 describe("AddTag", () => {
-  const mockedTimestamp = 1692175590
   // @ts-ignore
   const page: IPageText['page'] = {
     addTag: {
@@ -53,7 +52,7 @@ describe("AddTag", () => {
     expect(modalElement).toBeInTheDocument()
   })
 
-  it.skip("adds a new tag when form is submitted", async () => {
+  it("adds a new tag when form is submitted", async () => {
     const mockTagName = 'New Tag!'
     // @ts-ignore
     API.addTag.mockResolvedValueOnce()
@@ -77,8 +76,8 @@ describe("AddTag", () => {
         id: 'mocked-uuid',
         name: mockTagName,
         deleted: false,
-        createdAt: mockedTimestamp,
-        updatedAt: mockedTimestamp
+        createdAt: getCurrentTimestamp(),
+        updatedAt: getCurrentTimestamp()
       })
     })
 
