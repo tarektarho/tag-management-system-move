@@ -18,8 +18,6 @@ const Home = async ({
   // Fetch all tags using the getAllTags function
   const tags = await getAllTags() //Extracting the method logic for testing
 
-  //console.log(orderTagsByDescendingUpdatedAt(tags))
-
   return (
     <div className='flex min-h-screen flex-col items-center p-24'>
       <div className='mb-10 text-center lg:max-w-5xl lg:w-full lg:grid-cols-4'>

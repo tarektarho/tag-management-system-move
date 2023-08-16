@@ -24,11 +24,14 @@ export const getAllTags = async (): Promise<ITag[]> => {
 
     const responseData = await response.json()
 
+    console.log(responseData)
+
     const formattedData: ITag[] = responseData.map((tag: ITag) => ({
       ...tag,
       createdAt: formatTimestampToHumanReadable(tag.createdAt),
       updatedAt: formatTimestampToHumanReadable(tag.updatedAt),
     }))
+    console.log(formattedData)
 
     return formattedData
   } catch (error) {

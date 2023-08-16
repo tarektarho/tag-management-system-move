@@ -10,11 +10,10 @@ fetchMock.enableMocks()
 
 describe('API Tests', () => {
 
-  const formatedDate = formatTimestampToHumanReadable(getCurrentTimestamp())
-  console.log(formatedDate)
+  const timestamp = getCurrentTimestamp()
   const mockTags: ITag[] = [
-    { id: '1', name: 'Tag 1', deleted: false, createdAt: formatedDate, updatedAt: formatedDate },
-    { id: '2', name: 'Tag 2', deleted: false, createdAt: formatedDate, updatedAt: formatedDate },
+    { id: '1', name: 'Tag 1', deleted: false, createdAt: timestamp, updatedAt: timestamp },
+    { id: '2', name: 'Tag 2', deleted: false, createdAt: timestamp, updatedAt: timestamp },
   ]
 
   describe('getAllTags', () => {
@@ -24,15 +23,22 @@ describe('API Tests', () => {
       fetchMock.mockClear()
     })
 
-    it.skip('fetches data successfully from an API', async () => {
+    it('fetches data successfully from an API', async () => {
       // Mock the fetch response with mockTags data
       fetchMock.mockResponseOnce(JSON.stringify(mockTags))
 
       // Call the API function to fetch tags
       const tags = await API.getAllTags()
 
+      const UIDate = formatTimestampToHumanReadable(getCurrentTimestamp())
+      const results: ITag[] = [
+        { id: '1', name: 'Tag 1', deleted: false, createdAt: UIDate, updatedAt: UIDate },
+        { id: '2', name: 'Tag 2', deleted: false, createdAt: UIDate, updatedAt: UIDate },
+      ]
+
+
       // Assert that the returned tags match the mockTags data
-      expect(tags).toEqual(mockTags)
+      expect(tags).toEqual(results)
     })
 
     it('throws an error when the response status is not 200', async () => {
