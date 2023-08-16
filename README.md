@@ -5,7 +5,7 @@ The Tag Management App is a simple yet powerful tool that empowers users to effi
 ## Live Demo:
 https://tag-management-system-move.vercel.app/en
 
-![tag-managment-system](https://github.com/tarektarho/tag-management-system-move/assets/18512695/e6257d17-cfa2-4ac1-9653-3f0f4044c143)
+![tag-managment-system](https://github.com/tarektarho/tag-management-system-move/assets/18512695/4d917338-26d0-45ed-81c4-9e1477423c90)
 
 
 ## Features
@@ -26,11 +26,10 @@ https://tag-management-system-move.vercel.app/en
 
 ## Getting Started
 
-1. Clone this repository.
+1. Clone this repository. `git clone https://github.com/tarektarho/tag-management-system-move.git`
 2. Install dependencies using `npm install`.
-3. Configure the back-end API endpoint in `src/config.js`.
-4. Start the development server using `npm run dev`.
-5. Open your browser and navigate to `http://localhost:3000`.
+3. Start the development server using `npm run dev`.
+4. Open your browser and navigate to `http://localhost:3000`.
 
 ## API Usage
 
@@ -53,7 +52,7 @@ Styled components are not recommended in Next.js 13 due to potential issues with
 
 ## Code Coverage
 
-![Screenshot 2023-08-15 at 10 50 50](https://github.com/tarektarho/tag-management-system-move/assets/18512695/91860ae6-381d-409e-bc9c-aec887ba449f)
+![Screenshot 2023-08-15 at 10 50 50](https://github.com/tarektarho/tag-management-system-move/assets/18512695/0a4d29e3-918e-424b-9815-7df7fc0a5c8d)
 
 
 ## Todos
