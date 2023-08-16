@@ -21,8 +21,8 @@ jest.mock('next/navigation', () => ({
 export const mockTag: ITag = {
   id: '1',
   name: 'Tag 1',
-  createdAt: '2023-08-12T15:48:52.520Z',
-  updatedAt: '2023-08-13T10:00:00.000Z',
+  createdAt: formatISODateToHumanReadable('2023-08-12T15:48:52.520Z'),
+  updatedAt: formatISODateToHumanReadable('2023-08-13T10:00:00.000Z'),
   deleted: false
 }
 
@@ -79,9 +79,9 @@ describe("Tag Component", () => {
     mockTagComponent()
 
     expect(screen.getByText(mockTag.name)).toBeInTheDocument()
-    const createdAtElement = screen.getByText(formatISODateToHumanReadable(mockTag.createdAt))
+    const createdAtElement = screen.getByText(mockTag.createdAt)
     expect(createdAtElement).toBeInTheDocument()
-    const updatedAtElement = screen.getByText(formatISODateToHumanReadable(mockTag.updatedAt))
+    const updatedAtElement = screen.getByText(mockTag.updatedAt)
     expect(updatedAtElement).toBeInTheDocument()
   })
 

@@ -3,15 +3,17 @@ import fetchMock from "jest-fetch-mock"
 import { ITag } from "../../types/tags"
 import { BASE_URL, ERROR_INVALID_TAG, STATUS_OK } from "@/utils/constants"
 import { STATUS_CREATED } from "../../utils/constants"
+import { formatISODateToHumanReadable } from "../../utils/index"
 
 // Mock the global fetch function
 fetchMock.enableMocks()
 
 describe('API Tests', () => {
 
+  const formatedDate = formatISODateToHumanReadable('1692046409')
   const mockTags: ITag[] = [
-    { id: '1', name: 'Tag 1', deleted: false, createdAt: '2023-08-12T09:47:36.247Z' },
-    { id: '2', name: 'Tag 2', deleted: false, createdAt: '2023-08-13T10:12:45.123Z' },
+    { id: '1', name: 'Tag 1', deleted: false, createdAt: formatedDate, updatedAt: formatedDate },
+    { id: '2', name: 'Tag 2', deleted: false, createdAt: formatedDate, updatedAt: formatedDate },
   ]
 
   describe('getAllTags', () => {

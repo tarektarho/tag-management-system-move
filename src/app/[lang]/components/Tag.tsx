@@ -61,8 +61,8 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
   return (
     <tr key={tag.id} style={{ height: "48px" }}>
       <td className='w-64'>{tag.name}</td>
-      <td className='w-64'>{formatISODateToHumanReadable(tag.createdAt)}</td>
-      <td className='w-64'>{formatISODateToHumanReadable(tag.updatedAt)}</td>
+      <td className='w-64'>{tag.createdAt}</td>
+      <td className='w-64'>{tag.updatedAt}</td>
       <td className='flex gap-5'>
         <FiEdit
           data-testid="edit-icon"

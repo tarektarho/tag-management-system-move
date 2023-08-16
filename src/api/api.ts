@@ -1,14 +1,16 @@
 import { ITag } from "@/types/tags"
 import { BASE_URL, ERROR_INVALID_TAG } from "../utils/constants"
+import { formatISODateToHumanReadable } from "../utils/index"
 
 /**
  * Fetches all tags from the server.
  * @returns {Promise<ITag[]>} A promise that resolves to an array of tag objects.
  */
+
 export const getAllTags = async (): Promise<ITag[]> => {
   try {
     const response = await fetch(`${BASE_URL}/tags`, {
-      cache: "no-store" // Fetches the resource from the remote server on every request
+      cache: 'no-store', // Fetches the resource from the remote server on every request
     })
 
     if (!response.ok) {
@@ -16,7 +18,14 @@ export const getAllTags = async (): Promise<ITag[]> => {
     }
 
     const responseData = await response.json()
-    return responseData
+
+    const formattedData: ITag[] = responseData.map((tag: ITag) => ({
+      ...tag,
+      createdAt: formatISODateToHumanReadable(tag.createdAt),
+      updatedAt: formatISODateToHumanReadable(tag.updatedAt),
+    }))
+
+    return formattedData
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(`An error occurred while fetching tags: ${error.message}`)
