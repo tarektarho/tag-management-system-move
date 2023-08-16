@@ -1,7 +1,7 @@
 "use client"
 import { AiOutlinePlus } from "react-icons/ai"
 import Modal from "./Modal"
-import { FormEventHandler, useState, useEffect } from "react"
+import { FormEventHandler, useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { addTag } from "../../../api/api"
 import { getCurrentTimestamp } from "../../../utils/index"
@@ -16,6 +16,9 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const [newTagValue, setNewTagValue] = useState<string>("")
   const [tagEmptyError, setTagEmptyError] = useState<boolean>(false)
+
+  // Ref to store the input field element
+  const inputRef = useRef<HTMLInputElement>(null)
 
   /**
    * Handles the form submission when adding a new tag.
@@ -32,7 +35,7 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
 
     // Add the new tag using the API
     await addTag({
-      id: 'mocked-uuid',
+      id: '0',
       name: newTagValue,
       deleted: false,
       createdAt: getCurrentTimestamp(),
@@ -51,7 +54,10 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
    * Resets the tagEmptyError when the modal is closed.
    */
   useEffect(() => {
-    if (!modalOpen) {
+    if (modalOpen) {
+      // Focus on the input field when the modal opens
+      inputRef.current?.focus()
+    } else {
       setTagEmptyError(false)
     }
   }, [modalOpen])
@@ -70,6 +76,7 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
           <div className="modal-action">
             {/* Input field for entering the new tag */}
             <input
+              ref={inputRef}
               value={newTagValue}
               onChange={(e) => { setNewTagValue(e.target.value); setTagEmptyError(false) }}
               type='text'

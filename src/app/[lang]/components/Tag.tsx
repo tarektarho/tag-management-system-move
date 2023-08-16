@@ -1,6 +1,6 @@
 "use client"
 import { ITag } from "../../../types/tags"
-import { FormEventHandler, useEffect, useState } from "react"
+import { FormEventHandler, useEffect, useState, useRef } from "react"
 import { FiEdit, FiTrash2 } from "react-icons/fi"
 import { useRouter } from "next/navigation"
 import Modal from "./Modal"
@@ -22,6 +22,10 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
   const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false)
   const [tagToEdit, setTagToEdit] = useState<string>(tag.name)
   const [tagEmptyError, setTagEmptyError] = useState<boolean>(false)
+
+  // Ref to store the input field element
+  const inputRef = useRef<HTMLInputElement>(null)
+
 
   // Form submission handler for tag editing
   const handleSubmitEditTag: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -53,7 +57,13 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
 
   // Effect to reset tagEmptyError when edit modal is closed
   useEffect(() => {
-    if (!openModalEdit) {
+    if (openModalEdit && inputRef.current) {
+      // Focus on the input field when the modal opens
+      inputRef.current.focus()
+      // Move the cursor to the end of the input value
+      inputRef.current.selectionStart = inputRef.current.value.length
+      inputRef.current.selectionEnd = inputRef.current.value.length
+    } else {
       setTagEmptyError(false) // Reset tagEmptyError when modal is closed
     }
   }, [openModalEdit])
@@ -76,6 +86,7 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
             <h3 className='font-bold text-lg'>{text.tag.editTag}</h3>
             <div className='modal-action'>
               <input
+                ref={inputRef}
                 value={tagToEdit}
                 onChange={(e) => setTagToEdit(e.target.value)}
                 type='text'

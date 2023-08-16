@@ -73,7 +73,7 @@ describe("AddTag", () => {
     // Check if the addTag function was called with the correct parameters
     await waitFor(() => {
       expect(API.addTag).toHaveBeenCalledWith({
-        id: 'mocked-uuid',
+        id: '0',
         name: mockTagName,
         deleted: false,
         createdAt: getCurrentTimestamp(),
