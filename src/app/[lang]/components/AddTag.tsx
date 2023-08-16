@@ -22,7 +22,7 @@ const AddTag: React.FC<AddTagProps> = ({ text }) => {
    * 
    * @param {React.FormEvent<HTMLFormElement>} e - The form event object.
    */
-  const handleSubmitNewTag: FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmitNewTag: FormEventHandler<HTMLFormElement> = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!newTagValue) {
