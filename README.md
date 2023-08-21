@@ -1,12 +1,14 @@
+[![Build and Test](https://github.com/tarektarho/tag-management-system-move/actions/workflows/main.yml/badge.svg)](https://github.com/tarektarho/tag-management-system-move/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/tarektarho/tag-management-system-move/graph/badge.svg?token=4OXWHJB4NJ)](https://codecov.io/gh/tarektarho/tag-management-system-move)
+
 # Tag Management App
 
 The Tag Management App is a simple yet powerful tool that empowers users to efficiently manage their tags. With features such as tag addition, editing, deletion, and listing, this app offers a streamlined experience for staying organized and in control.
 
 ## Live Demo:
+
 https://tag-management-system-move.vercel.app/en
 
 ![tag-managment-system](https://github.com/tarektarho/tag-management-system-move/assets/18512695/4d917338-26d0-45ed-81c4-9e1477423c90)
-
 
 ## Features
 
@@ -48,12 +50,9 @@ The app uses [DaisyUI](https://daisyui.com) as the UI library to enhance its app
 
 Styled components are not recommended in Next.js 13 due to potential issues with loading styles. Refer to the [Docs](https://nextjs.org/docs/app/building-your-application/styling/css-in-js#styled-components) for a workaround if needed.
 
-
-
 ## Code Coverage
 
 ![Screenshot 2023-08-15 at 10 50 50](https://github.com/tarektarho/tag-management-system-move/assets/18512695/0a4d29e3-918e-424b-9815-7df7fc0a5c8d)
-
 
 ## Todos
 
