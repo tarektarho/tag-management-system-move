@@ -28,7 +28,7 @@ https://tag-management-system.vercel.app/en
 
 ## Getting Started
 
-1. Clone this repository. `git clone https://github.com/tarektarho/tag-management-system-move.git`
+1. Clone this repository. `git clone https://github.com/tarektarho/tag-management-system.git`
 2. Install dependencies using `npm install`.
 3. Start the development server using `npm run dev`.
 4. Open your browser and navigate to `http://localhost:3000`.
