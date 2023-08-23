@@ -6,7 +6,7 @@ The Tag Management App is a simple yet powerful tool that empowers users to effi
 
 ## Live Demo:
 
-https://tag-management-system-move.vercel.app/en
+https://tag-management-system.vercel.app/en
 
 ![tag-managment-system](https://github.com/tarektarho/tag-management-system-move/assets/18512695/4d917338-26d0-45ed-81c4-9e1477423c90)
 
