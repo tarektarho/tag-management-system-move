@@ -57,11 +57,11 @@ Styled components are not recommended in Next.js 13 due to potential issues with
 ## Todos
 
 - [ ] Implement Welcome Popup
-- [ ] Implement Auth
+- [x] Implement Auth
 - [ ] Soft Delete
 - [ ] Dark/Light Mode
 - [ ] Split the style per component
-- [ ] Add More tests
+- [x] Add More tests
 
 ## Learn More
 
