@@ -10,8 +10,8 @@ import { IPageText } from "@/types/pageText"
 
 // Define component's props interface
 interface TagProps {
-  tag: ITag,
-  text: IPageText['page']
+  tag: ITag
+  text: IPageText["page"]
 }
 const Tag: React.FC<TagProps> = ({ tag, text }) => {
   // Router instance for navigation
@@ -25,7 +25,6 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
 
   // Ref to store the input field element
   const inputRef = useRef<HTMLInputElement>(null)
-
 
   // Form submission handler for tag editing
   const handleSubmitEditTag: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -41,7 +40,7 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
       id: tag.id,
       name: tagToEdit,
       deleted: false,
-      updatedAt: getCurrentTimestamp()
+      updatedAt: getCurrentTimestamp(),
     })
     setOpenModalEdit(false)
     router.refresh() // Refresh the component
@@ -70,52 +69,47 @@ const Tag: React.FC<TagProps> = ({ tag, text }) => {
 
   return (
     <tr key={tag.id} style={{ height: "48px" }}>
-      <td className='w-64'>{tag.name}</td>
-      <td className='w-64'>{tag.createdAt}</td>
-      <td className='w-64'>{tag.updatedAt}</td>
-      <td className='flex gap-5'>
+      <td className="w-64">{tag.name}</td>
+      <td className="w-64">{tag.createdAt}</td>
+      <td className="w-64">{tag.updatedAt}</td>
+      <td className="flex gap-5">
         <FiEdit
           data-testid="edit-icon"
           onClick={() => setOpenModalEdit(true)}
-          cursor='pointer'
-          className='text-sky-500'
+          cursor="pointer"
+          className="text-sky-500"
           size={23}
         />
         <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
           <form onSubmit={handleSubmitEditTag}>
-            <h3 className='font-bold text-lg'>{text.tag.editTag}</h3>
-            <div className='modal-action'>
+            <h3 className="font-bold text-lg">{text.tag.editTag}</h3>
+            <div className="modal-action">
               <input
                 ref={inputRef}
                 value={tagToEdit}
                 onChange={(e) => setTagToEdit(e.target.value)}
-                type='text'
+                type="text"
                 placeholder={text.tag.typeHere}
-                className={`input input-bordered w-full ${tagEmptyError ? "border-red-700" : ""
-                  }`}
+                className={`input input-bordered w-full ${tagEmptyError ? "border-red-700" : ""}`}
               />
-              <button type='submit' className='btn btn-neutral'>
+              <button type="submit" className="btn btn-neutral">
                 {text.tag.save}
               </button>
             </div>
-            {tagEmptyError && (
-              <span className="flex text-red-700">{text.erorrs.nameCannotBeEmpty}</span>
-            )}
+            {tagEmptyError && <span className="flex text-red-700">{text.erorrs.nameCannotBeEmpty}</span>}
           </form>
         </Modal>
         <FiTrash2
           data-testid="delete-icon"
           onClick={() => setOpenModalDeleted(true)}
-          cursor='pointer'
-          className='text-rose-700'
+          cursor="pointer"
+          className="text-rose-700"
           size={23}
         />
         <Modal modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>
-          <h3 className='text-lg'>
-            {text.tag.deleteTagConfiramtion}
-          </h3>
-          <div className='modal-action'>
-            <button onClick={() => handleDeleteTag()} className='btn btn-neutral'>
+          <h3 className="text-lg">{text.tag.deleteTagConfiramtion}</h3>
+          <div className="modal-action">
+            <button onClick={() => handleDeleteTag()} className="btn btn-neutral">
               {text.tag.yes}
             </button>
           </div>
