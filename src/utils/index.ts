@@ -9,6 +9,7 @@ export const formatTimestampToHumanReadable = (timestamp: number): string => {
     day: "numeric",
     hour: "numeric",
     minute: "numeric",
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // Get current time zone
   }
 
   const formattedDate = new Date(timestamp * 1000).toLocaleDateString("en-GB", options)
