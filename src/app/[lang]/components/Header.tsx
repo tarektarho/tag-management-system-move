@@ -12,7 +12,7 @@ const Header: React.FC = () => {
           <LocaleSwitcher />
         </div>
         <div className="btn-container">
-          <button onClick={() => signOut()} className="rounded-md border bg-black px-3 py-2 text-white glass">
+          <button onClick={() => signOut()} className="rounded-md border bg-black px-3 py-2 text-white glass text-sm">
             Logout
           </button>
         </div>
