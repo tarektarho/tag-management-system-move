@@ -19,7 +19,6 @@ export const formatTimestampToHumanReadable = (timestamp: number): string => {
   }
 
   const formattedDate = new Date(timestamp * 1000).toLocaleDateString("en-GB", options)
-  Sentry.captureMessage(`${timeZone} - timeZone`)
   return formattedDate
 }
 
