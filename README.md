@@ -1,4 +1,4 @@
-[![Build and Test](https://github.com/tarektarho/tag-management-system-move/actions/workflows/main.yml/badge.svg)](https://github.com/tarektarho/tag-management-system-move/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/tarektarho/tag-management-system-move/graph/badge.svg?token=4OXWHJB4NJ)](https://codecov.io/gh/tarektarho/tag-management-system-move)
+[![Build and Test](https://github.com/tarektarho/tag-management-system-move/actions/workflows/main.yml/badge.svg)](https://github.com/tarektarho/tag-management-system-move/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/tarektarho/tag-management-system/graph/badge.svg?token=4OXWHJB4NJ)](https://codecov.io/gh/tarektarho/tag-management-system)
 
 # Tag Management App
 
