@@ -15,7 +15,7 @@
     "@formatjs/intl-localematcher": "^0.4.0",
     "@sentry/browser": "^7.73.0",
     "@sentry/nextjs": "^7.106.0",
-    "@types/node": "20.4.10",
+    "@types/node": "20.11.17",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.7",
     "eslint": "8.47.0",
